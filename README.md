@@ -13,7 +13,8 @@ No accounts, no network, no dependencies, no storage. Just random passwords, gen
 - Choose the length and which character types to include (lowercase, uppercase, numbers, symbols)
 - Guarantees at least one character from every selected type
 - Optional "avoid look-alike characters" mode (`i l 1 L o 0 O`)
-- Copy to clipboard with one flag, on macOS, Windows and Linux
+- A simple window with a slider, tick boxes and a built-in guide, plus a ready-to-run Windows app
+- Copy to clipboard with one click (the app clears it again after 30 seconds)
 - Clean output: the password is the only thing printed to stdout, so it pipes nicely
 - Interactive mode for people who don't like flags
 - Strength estimate (entropy) if you want one
@@ -21,9 +22,22 @@ No accounts, no network, no dependencies, no storage. Just random passwords, gen
 
 ## Requirements
 
-Python 3.10 or newer. That's it.
+Python 3.10 or newer (not needed if you use the Windows app below). That's it.
 
-## Quick start
+## Easiest way: the app (no commands needed)
+
+1. Open the [latest release](https://github.com/tenaviel/passgen/releases/latest) and download **passgen.exe**.
+2. Double-click it. A window opens with a password already made for you.
+3. Click **Copy password**, then paste it (Ctrl+V) wherever you need it.
+
+Use the slider and tick boxes to change the length or leave out character types. The strength bar updates as you go, and a short guide is built into the window.
+
+**About the Windows warning:** the first time you run it, Windows may show a blue *"Windows protected your PC"* screen. That happens to every program that isn't code-signed (signing certificates cost money), not because something is wrong. Click **More info**, then **Run anyway**. If you'd rather not trust a downloaded file, you can check it yourself:
+
+- The exe is built automatically by GitHub from this repository's code (see [`.github/workflows/build-exe.yml`](.github/workflows/build-exe.yml)), and each release includes a `passgen.exe.sha256` file. In PowerShell, `Get-FileHash passgen.exe` should print the same hash.
+- Or skip the exe and run the window from source: `python -m passgen.gui` (see below).
+
+## Command-line quick start
 
 ```bash
 git clone https://github.com/tenaviel/passgen.git
@@ -38,6 +52,14 @@ SK;s63{U:}F4/h^.
 ```
 
 On Windows, use `py -m passgen` if `python` isn't found.
+
+### Window from source
+
+```bash
+python -m passgen.gui
+```
+
+Needs tkinter, which is included with the standard Python installer for Windows and macOS. On Linux, install it with `sudo apt install python3-tk`.
 
 ### Optional: install it as a `passgen` command
 
@@ -127,7 +149,8 @@ Please read these. A password generator is only as safe as the way you handle wh
 
 - **Everything is local.** passgen makes no network requests and writes nothing to disk. There is no history, no log, no telemetry.
 - **The password is shown in your terminal.** It may stay in your scrollback, and anyone looking at your screen can see it. Clear the terminal if that matters.
-- **The clipboard is not private.** Other programs can read it, and clipboard managers or cloud clipboard sync (Windows clipboard history, Universal Clipboard, etc.) may store it. `--copy` does **not** clear the clipboard afterwards. Paste it where you need it, then copy something harmless over it.
+- **The Windows app is not code-signed**, so Windows will warn you the first time you run it. See the section above for how to verify it.
+- **The clipboard is not private.** Other programs can read it, and clipboard managers or cloud clipboard sync (Windows clipboard history, Universal Clipboard, etc.) may store it. The app clears the clipboard 30 seconds after copying (or when you close it), but that can't reach Windows clipboard history (Win+V), which may keep a copy. The command-line `--copy` does **not** clear anything, so paste it where you need it, then copy something harmless over it.
 - **It can't protect a compromised computer.** Malware, keyloggers and malicious browser extensions can capture passwords no matter how they were generated.
 - **It is not a password manager.** passgen doesn't remember anything. Use a reputable password manager to store what you generate, and use a unique password for every account.
 - **The entropy figure is an estimate.** It assumes an attacker knows your settings and nothing else, and it ignores the tiny effect of the "at least one of each type" rule. It's a ballpark, not a guarantee.
@@ -144,9 +167,11 @@ passgen/
 │   ├── __main__.py      # enables `python -m passgen`
 │   ├── cli.py           # argument parsing and output
 │   ├── clipboard.py     # cross-platform clipboard helper
+│   ├── gui.py           # the window (tkinter)
 │   └── generator.py     # the actual password logic
+├── packaging/           # entry point used to build the Windows app
 ├── tests/               # unit tests (standard library only)
-├── .github/workflows/   # automated tests on GitHub
+├── .github/workflows/   # automated tests + Windows app build
 ├── pyproject.toml
 ├── LICENSE
 └── README.md
