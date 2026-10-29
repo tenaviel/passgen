@@ -7,7 +7,7 @@ name = "passgen"
 dynamic = ["version"]
 description = "A simple, secure, local command-line password generator."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [{ name = "Your Real Name" }]
 keywords = ["password", "generator", "security", "cli", "secrets"]
 classifiers = [

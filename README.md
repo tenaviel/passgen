@@ -1,7 +1,7 @@
 # passgen
 
 [![Tests](https://github.com/tenaviel/passgen/actions/workflows/tests.yml/badge.svg)](https://github.com/tenaviel/passgen/actions/workflows/tests.yml)
-![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
 
@@ -21,7 +21,7 @@ No accounts, no network, no dependencies, no storage. Just random passwords, gen
 
 ## Requirements
 
-Python 3.9 or newer. That's it.
+Python 3.10 or newer. That's it.
 
 ## Quick start
 
