@@ -1,6 +1,6 @@
 # passgen
 
-[![Tests](https://github.com/YOUR_USERNAME/passgen/actions/workflows/tests.yml/badge.svg)](https://github.com/YOUR_USERNAME/passgen/actions/workflows/tests.yml)
+[![Tests](https://github.com/tenaviel/passgen/actions/workflows/tests.yml/badge.svg)](https://github.com/tenaviel/passgen/actions/workflows/tests.yml)
 ![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
@@ -26,7 +26,7 @@ Python 3.9 or newer. That's it.
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/passgen.git
+git clone https://github.com/tenaviel/passgen.git
 cd passgen
 python -m passgen
 ```
@@ -49,7 +49,7 @@ passgen
 Or, to keep it out of your other Python packages, use [pipx](https://pipx.pypa.io/):
 
 ```bash
-pipx install git+https://github.com/YOUR_USERNAME/passgen.git
+pipx install git+https://github.com/tenaviel/passgen.git
 ```
 
 ## Usage

@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "A simple, secure, local command-line password generator."
 readme = "README.md"
 requires-python = ">=3.9"
-authors = [{ name = "YOUR NAME" }]
+authors = [{ name = "Your Real Name" }]
 keywords = ["password", "generator", "security", "cli", "secrets"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -23,8 +23,8 @@ dependencies = []
 passgen = "passgen.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/YOUR_USERNAME/passgen"
-Issues = "https://github.com/YOUR_USERNAME/passgen/issues"
+Homepage = "https://github.com/tenaviel/passgen"
+Issues = "https://github.com/tenaviel/passgen/issues"
 
 [tool.setuptools]
 packages = ["passgen"]
